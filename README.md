@@ -2,6 +2,7 @@
 - APK file generated for the project (http://www.openintents.org/shoppinglist/) and included in the current folder structure
 - Configuration parameters need to be modified in Driver.java (APK file path and AVD name)
 
-Compile build command: 
+Maven command: 
+mvn clean 
 
-mvn clean compile test
+Runner: TestRunner.java
