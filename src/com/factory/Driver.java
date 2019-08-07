@@ -26,8 +26,6 @@ public class Driver {
 
            // String APP = "C:\\Users\\Indu Katta\\AndroidStudioProjects\\shoppinglist-master\\ShoppingList\\build\\outputs\\apk\\play\\debug\\org.openintents.shopping-2.2.0-play-debug.apk";
         	String APP = "C:\\Users\\Indu Katta\\AndroidStudioProjects\\shoppinglist-master\\ShoppingList\\play\\release\\org.openintents.shopping-2.2.0-play-release.apk";
-
-            //Constants.Report_File_Name = this.getClass().getSimpleName();
             DesiredCapabilities caps = new DesiredCapabilities();
 
             caps.setCapability("platformName", "Android");
