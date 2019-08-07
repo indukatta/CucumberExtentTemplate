@@ -1,31 +1,23 @@
 package pageobjects;
 
 
-import com.factory.Driver;
+
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 
 public class ShoppingListPage extends BasePage {
 
     public ShoppingListPage(AppiumDriver driver) {
         super(driver);
-//        PageFactory.initElements(new AppiumFieldDecorator(Driver.driver), this);
-        System.out.println("-----Test------");
     }
-
 
     @AndroidFindBy(accessibility = "Open navigation drawer")
     private MobileElement mnuOptions;
@@ -53,16 +45,6 @@ public class ShoppingListPage extends BasePage {
 
     @FindBy(id = "org.openintents.shopping:id/snackbar_text")
     private MobileElement txtDeleteConfirmMsg;
-
-
-//    public void createNewList(String listName){
-//        createNewListName(listName);
-////        for(String item : items){
-////            addItem(item);
-////        }
-////        click(btnAdd);
-//    }
-
 
     public void createNewListName(String listName){
         mnuOptions.click();
@@ -102,12 +84,12 @@ public class ShoppingListPage extends BasePage {
             }
         }
     }
-//
-//    public void verifyDeleteConfirmMessage(){
-//        String expected = "Removed 1 item. Use \"Pick Items\" to reuse some later.";
-//        String actual = txtDeleteConfirmMsg.getText();
-//        Assert.assertEquals(actual, expected);
-//    }
+
+    public void verifyDeleteConfirmMessage(){
+        String expected = "Removed 1 item. Use \"Pick Items\" to reuse some later.";
+        String actual = txtDeleteConfirmMsg.getText();
+        Assert.assertEquals(actual, expected);
+    }
     
 
     public void sortAndVerifyItems(String listName, String[] expectedList){
@@ -119,10 +101,6 @@ public class ShoppingListPage extends BasePage {
     	for(WebElement item : itemsList) {
     		actual[i++] = item.getText();
     	}
-    	System.out.println(actual);
-    	System.out.println(expectedList);
-    	
-    	Assert.assertTrue(Arrays.equals(actual, expectedList));
-    	
+    	Assert.assertTrue(Arrays.equals(actual, expectedList));  	
     }
 }

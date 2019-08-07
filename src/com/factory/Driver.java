@@ -16,11 +16,16 @@ public class Driver {
     public static AppiumDriver driver;
 
     public ShoppingListPage shoppingListPage;
+    
+    public Driver() {
+    	
+    }
 
     public void createDriver(){
         try {
 
-            String APP = "/Users/ikatta/Documents/Framework/ZRBSTEST/shoppinglist-master/ShoppingList/build/outputs/apk/play/debug/org.openintents.shopping-2.2.0-play-debug.apk";
+           // String APP = "C:\\Users\\Indu Katta\\AndroidStudioProjects\\shoppinglist-master\\ShoppingList\\build\\outputs\\apk\\play\\debug\\org.openintents.shopping-2.2.0-play-debug.apk";
+        	String APP = "C:\\Users\\Indu Katta\\AndroidStudioProjects\\shoppinglist-master\\ShoppingList\\play\\release\\org.openintents.shopping-2.2.0-play-release.apk";
 
             //Constants.Report_File_Name = this.getClass().getSimpleName();
             DesiredCapabilities caps = new DesiredCapabilities();
@@ -30,7 +35,7 @@ public class Driver {
             caps.setCapability("deviceName", "Android Emulator");
             caps.setCapability("automationName", "UiAutomator2");
             caps.setCapability("app", APP);
-            caps.setCapability("avd","Pixel_2_API_28");
+            caps.setCapability("avd","Nexus_5X_API_29_x86");
             caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60);
 
 
