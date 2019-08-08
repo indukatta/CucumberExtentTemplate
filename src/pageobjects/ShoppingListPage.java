@@ -1,7 +1,5 @@
 package pageobjects;
 
-
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -60,6 +58,12 @@ public class ShoppingListPage extends BasePage {
             btnAdd.click();
         }
     }
+    
+    public void addItem(String item){
+    	edtItem.setValue(item);
+        btnAdd.click();
+    }
+
 
     public void removeItemFromList(String listName, String item) {
         openList(listName);

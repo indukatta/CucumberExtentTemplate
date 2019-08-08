@@ -1,9 +1,8 @@
 package stepdefinitions;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import com.factory.Driver;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,40 +15,21 @@ public class ShoppingCartStepActivities extends Driver {
         createDriver();
     }
 
-    @Given("^the user creates a new shopping list$")
-    public void createShoppinglist(){
+    @Given("^the user creates a new \"([^\"]*)\" shopping list$")
+    public void createShoppinglist(String shoppingListName){
         shoppingListPage = new ShoppingListPage(driver);
-        shoppingListPage.createNewListName("Fruits");
+        shoppingListPage.createNewListName(shoppingListName);
     }
 
     @When("^the user adds items to the shopping list$")
-    public void addItemsToShoppingList(){
-    	
-    	List<String> items = new ArrayList<String>();
-    	items.add("Strawberries");
-    	items.add("Mangoes");
-    	items.add("Apples");
-    	items.add("Bananas");
-    	
+    public void addItemsToShoppingList(DataTable itemsList){
+    	List<String> items = itemsList.asList(String.class);
     	shoppingListPage.addItems(items);
     }
-
-    
-    @Given("^the user creates new  shopping list and adds items to the list$")
-    public void createAndAddItemsToShoppingList(){
-    	shoppingListPage.createNewListName("DairyProducts");
-    	List<String> items = new ArrayList<String>();
-    	items.add("Milk");
-    	items.add("Yogurt");
-    	items.add("Cheese");
-    	items.add("Honey");
-    	shoppingListPage.addItems(items);
-    }
-    
   
-    @Then("^the user should be able to remove unwanted item$")
-    public void removeItemFromList(){
-    	shoppingListPage.removeItemFromList("DairyProducts", "Honey");
+    @Then("^the user should be able to remove \"([^\"]*)\" from \"([^\"]*)\" list$")
+    public void removeItemFromList(String item, String listName){
+    	shoppingListPage.removeItemFromList(listName, item);
     }
     
     @Then("^sort and verify items in the list$")
