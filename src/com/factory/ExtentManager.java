@@ -1,7 +1,8 @@
 package com.factory;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+//import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.apache.commons.io.FileUtils;
 
@@ -15,7 +16,8 @@ public class ExtentManager {
     private static String reportFileName = Constants.Report_File_Name + ".html";
     private static String fileSeparator = System.getProperty("file.separator");
     private static String reportFileDir =  Constants.Report_Directory + fileSeparator + Constants.Report_File_Name ;
-    private static String reportFilePath = reportFileDir + fileSeparator + reportFileName;
+//    private static String reportFilePath = reportFileDir + fileSeparator + reportFileName;
+    private static String reportFilePath = "C:\\Users\\Indu Katta\\Desktop\\TestReportFolder" + reportFileName;
 
 
     public static ExtentReports getInstance() {
@@ -31,7 +33,7 @@ public class ExtentManager {
 
         Constants.Screenshot_Folder_Path = reportFileDir ;
 
-        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(reportFilePath);
+        ExtentSparkReporter htmlReporter = new ExtentSparkReporter(reportFilePath);
         htmlReporter.config().setTheme(Theme.STANDARD);
         htmlReporter.config().setDocumentTitle(reportFileName);
         htmlReporter.config().setEncoding("utf-8");
@@ -41,8 +43,8 @@ public class ExtentManager {
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
         //Set environment details
-        extent.setSystemInfo("OS", "Mac");
-        extent.setSystemInfo("AUT", "QA");
+//        extent.setSystemInfo("OS", "Mac");
+//        extent.setSystemInfo("AUT", "QA");
 
         return extent;
     }
